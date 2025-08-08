@@ -207,7 +207,7 @@ const ExternalPlugin = props => {
       {COMMENT_TWIKOO_COUNT_ENABLE && <TwikooCommentCounter {...props} />}
       {RIBBON && <Ribbon />}
       {DIFY_CHATBOT_ENABLED && <DifyChatbot />}
-/*     {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}*/
+     {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}
       {!CAN_COPY && <DisableCopy />}
       {WEB_WHIZ_ENABLED && <WebWhiz />}
       {AD_WWADS_BLOCK_DETECT && <AdBlockDetect />}
@@ -486,10 +486,10 @@ const Messenger = dynamic(() => import('@/components/FacebookMessenger'), {
   ssr: false
 })
 const VConsole = dynamic(() => import('@/components/VConsole'), { ssr: false })
-/*const CustomContextMenu = dynamic(
+const CustomContextMenu = dynamic(
   () => import('@/components/CustomContextMenu'),
   { ssr: false }
-)*/
+)
 const DisableCopy = dynamic(() => import('@/components/DisableCopy'), {
   ssr: false
 })
