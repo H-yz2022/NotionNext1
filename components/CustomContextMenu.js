@@ -40,10 +40,13 @@ export default function CustomContextMenu(props) {
     setShow(false)
   }, [router])
 
+  // Disable right-click menu entirely if config says so
   useEffect(() => {
+    const enableCustomMenu = JSON.parse(siteConfig('CUSTOM_RIGHT_CLICK_CONTEXT_MENU'))
+    if (!enableCustomMenu) return
+
     const handleContextMenu = event => {
       event.preventDefault()
-      // 计算点击位置加菜单宽高是否超出屏幕，如果超出则贴边弹出
       const x =
         event.clientX < windowSize.width - width
           ? event.clientX
@@ -150,7 +153,7 @@ export default function CustomContextMenu(props) {
   const CUSTOM_RIGHT_CLICK_CONTEXT_MENU_TAG = siteConfig(
     'CUSTOM_RIGHT_CLICK_CONTEXT_MENU_TAG'
   )
-  const CAN_COPY = siteConfig('CAN_COPY')
+  const CAN_COPY = JSON.parse(siteConfig('CAN_COPY'))
   const CUSTOM_RIGHT_CLICK_CONTEXT_MENU_SHARE_LINK = siteConfig(
     'CUSTOM_RIGHT_CLICK_CONTEXT_MENU_SHARE_LINK'
   )
