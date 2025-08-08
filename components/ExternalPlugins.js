@@ -53,10 +53,10 @@ const ExternalPlugin = props => {
   const RIBBON = siteConfig('RIBBON', null, NOTION_CONFIG)
   const CUSTOM_RIGHT_CLICK_CONTEXT_MENU = siteConfig(
     'CUSTOM_RIGHT_CLICK_CONTEXT_MENU',
-    null,
+    false,
     NOTION_CONFIG
   )
-  const CAN_COPY = siteConfig('CAN_COPY', null, NOTION_CONFIG)
+  const CAN_COPY = siteConfig('CAN_COPY', false, NOTION_CONFIG)
   const WEB_WHIZ_ENABLED = siteConfig('WEB_WHIZ_ENABLED', null, NOTION_CONFIG)
   const AD_WWADS_BLOCK_DETECT = siteConfig(
     'AD_WWADS_BLOCK_DETECT',
