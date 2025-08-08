@@ -6,7 +6,8 @@ import { useEffect } from 'react'
  */
 export default function DisableCopy() {
   useEffect(() => {
-    if (!JSON.parse(siteConfig('CAN_COPY'))) {
+    const canCopy = JSON.parse(siteConfig('CAN_COPY')) // make sure it's a boolean
+    if (!canCopy) {
       // 全栈添加禁止复制的样式
       document.getElementsByTagName('html')[0].classList.add('forbid-copy')
       // 监听复制事件
