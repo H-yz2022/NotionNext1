@@ -207,7 +207,7 @@ const ExternalPlugin = props => {
       {COMMENT_TWIKOO_COUNT_ENABLE && <TwikooCommentCounter {...props} />}
       {RIBBON && <Ribbon />}
       {DIFY_CHATBOT_ENABLED && <DifyChatbot />}
-      {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}
+/*     {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}*/
       {!CAN_COPY && <DisableCopy />}
       {WEB_WHIZ_ENABLED && <WebWhiz />}
       {AD_WWADS_BLOCK_DETECT && <AdBlockDetect />}
