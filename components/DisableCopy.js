@@ -4,19 +4,41 @@ import { useEffect } from 'react'
 /**
  * 禁止用户拷贝文章的插件
  */
-export default function DisableCopy() {
-  useEffect(() => {
-    const canCopy = JSON.parse(siteConfig('CAN_COPY')) // make sure it's a boolean
-    if (!canCopy) {
-      // 全栈添加禁止复制的样式
-      document.getElementsByTagName('html')[0].classList.add('forbid-copy')
-      // 监听复制事件
-      document.addEventListener('copy', function (event) {
-        event.preventDefault() // 阻止默认复制行为
-        alert('抱歉，本网页内容不可复制！')
-      })
-    }
-  }, [])
 
-  return null
-}
+const DisableCopy = () => {
+  useEffect(() => {
+    const preventCopy = e => {
+      e.preventDefault();
+      alert('Copying is disabled on this site.');
+      return false;
+    };
+    const preventCut = e => {
+      e.preventDefault();
+      return false;
+    };
+    const preventContextMenu = e => {
+      e.preventDefault();
+      return false;
+    };
+    const preventSelectStart = e => {
+      e.preventDefault();
+      return false;
+    };
+
+    document.addEventListener('copy', preventCopy);
+    document.addEventListener('cut', preventCut);
+    document.addEventListener('contextmenu', preventContextMenu);
+    document.addEventListener('selectstart', preventSelectStart);
+
+    return () => {
+      document.removeEventListener('copy', preventCopy);
+      document.removeEventListener('cut', preventCut);
+      document.removeEventListener('contextmenu', preventContextMenu);
+      document.removeEventListener('selectstart', preventSelectStart);
+    };
+  }, []);
+
+  return null; // No UI needed
+};
+
+export default DisableCopy;
