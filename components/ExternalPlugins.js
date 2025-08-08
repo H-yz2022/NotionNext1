@@ -491,7 +491,7 @@ const CustomContextMenu = dynamic(
   { ssr: false }
 )
 const DisableCopy = dynamic(() => import('@/components/DisableCopy'), {
-  ssr: true
+  ssr: false
 })
 const AdBlockDetect = dynamic(() => import('@/components/AdBlockDetect'), {
   ssr: false
