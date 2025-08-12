@@ -65,7 +65,8 @@ const BLOG = {
     'Welcome to my website!',
 
   // uuid重定向至 slug
-  UUID_REDIRECT: process.env.UUID_REDIRECT || false
+  UUID_REDIRECT: process.env.UUID_REDIRECT || false,
+  WIDGET_PET: process.env.NEXT_PUBLIC_WIDGET_PET || false// 是否显示宠物挂件
 }
 
 module.exports = BLOG
