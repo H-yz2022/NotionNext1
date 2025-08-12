@@ -66,7 +66,10 @@ const BLOG = {
 
   // uuid重定向至 slug
   UUID_REDIRECT: process.env.UUID_REDIRECT || false,
-  WIDGET_PET: process.env.NEXT_PUBLIC_WIDGET_PET || false// 是否显示宠物挂件
+   // 悬浮挂件
+  WIDGET_PET: process.env.NEXT_PUBLIC_WIDGET_PET || false, // 是否显示宠物挂件
+  WIDGET_PET_SWITCH_THEME: false// 点击宠物挂件切换博客主题
+
 }
 
 module.exports = BLOG
