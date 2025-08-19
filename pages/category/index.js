@@ -29,3 +29,29 @@ export async function getStaticProps({ locale }) {
         )
   }
 }
+
+export async function getStaticPaths() {
+  let categories = [];
+  try {
+    // Example of fetching data from an API
+    const res = await fetch('https://api.example.com/categories');
+    const data = await res.json();
+    // Assuming the API returns an array of category objects
+    categories = data.categories || []; 
+  } catch (error) {
+    console.error("Failed to fetch categories:", error);
+    // In case of an error, fall back to an empty array
+    categories = [];
+  }
+  
+  // Map the fetched data to the required paths format
+  const paths = categories.map((category) => ({
+    params: { category: category.slug },
+  }));
+  
+  // Return the paths and a fallback option
+  return {
+    paths,
+    fallback: false, // or 'blocking' or true depending on your needs
+  };
+}
