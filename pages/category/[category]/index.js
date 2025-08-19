@@ -54,12 +54,23 @@ export async function getStaticProps({ params: { category }, locale }) {
 }
 
 export async function getStaticPaths() {
-  const from = 'category-paths'
-  const { categoryOptions } = await getGlobalData({ from })
-  return {
-    paths: Object.keys(categoryOptions).map(category => ({
-      params: { category: categoryOptions[category]?.name }
-    })),
-    fallback: true
+  const from = 'category-paths';
+  const { categoryOptions } = await getGlobalData({ from });
+  
+  // Ensure categoryOptions is not null or undefined
+  if (!categoryOptions) {
+    return {
+      paths: [],
+      fallback: true,
+    };
   }
+
+  const paths = Object.values(categoryOptions).map(option => ({
+    params: { category: option.name }
+  }));
+
+  return {
+    paths,
+    fallback: true
+  };
 }
