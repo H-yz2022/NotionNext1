@@ -55,16 +55,18 @@ export async function getStaticProps({ params: { category }, locale }) {
 
 export async function getStaticPaths() {
   const from = 'category-paths';
-  const { categoryOptions } = await getGlobalData({ from });
-  
-  // Ensure categoryOptions is not null or undefined
-  if (!categoryOptions) {
-    return {
-      paths: [],
-      fallback: true,
-    };
+  let categoryOptions = {}; // Initialize with a default empty object
+
+  try {
+    const data = await getGlobalData({ from });
+    categoryOptions = data.categoryOptions || {};
+  } catch (error) {
+    console.error('Error fetching global data for categories:', error);
+    // On error, categoryOptions remains an empty object,
+    // which prevents the build from crashing.
   }
 
+  // Use Object.values to get an array of category objects
   const paths = Object.values(categoryOptions).map(option => ({
     params: { category: option.name }
   }));
